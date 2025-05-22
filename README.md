@@ -1,63 +1,39 @@
 ## 🧠 Calendar Multi-Agent Assistant with CrewAI
 
-This project is a **multi-agent personal assistant for managing calendars and schedules**, built using [CrewAI](https://docs.crewai.com/). The system orchestrates a collaborative set of specialized agents through a centralized **CrewAI Flow**, offering seamless automation of meeting scheduling, availability checking, and event tracking.
-
-### 🚀 Overview
-
-Designed to act as your intelligent calendar companion, this assistant is powered by three specialized CrewAI agents and a managing agent that coordinates their tasks. The system streamlines calendar-related tasks through a modular and extensible CrewAI architecture.
+This project is a **multi-agent personal assistant for managing calendars and schedules**, built using [CrewAI](https://docs.crewai.com/). 
 
 ### 👥 Agents
 
-- **📅 Meeting Scheduler Agent**  
-  Proposes and schedules meetings based on user input, availability, and context.
+This personal assistant consists of three specialized agents, each handling a core aspect of calendar management.
 
-- **🕒 Availability Checker Agent**  
-  Scans calendar data or inputs to determine optimal times for new events or meetings.
+**📅 Meeting Scheduler Agent**  
+- Handles the scheduling of new meetings.
+- Understands time zones, meeting duration, participants, and context.
+  
+**🕒 Availability Checker Agent**  
+- Checks user availability based on existing calendar events.
+- Helps find optimal time slots for new meetings.
+  
+ **🎉 Event Checker Agent**  
+- Reviews and retrieves details about existing calendar events.
+- Can answer questions like “What do I have today?” or “Show me next week’s schedule.”
 
-- **🎉 Event Checker Agent**  
-  Tracks existing events, ensures no overlaps, and provides quick summaries of upcoming events.
+These agents are given tasks by a **Manager Agent** and structured within a unified **CrewAI Flow**.
 
-These agents are dynamically orchestrated by a **Manager Agent** using CrewAI's `@crew` method and structured within a unified **CrewAI Flow**.
 
 ### 🛠️ Tech Stack
 
 - 🧠 [CrewAI](https://github.com/CrewAI/crewAI)
 - 🐍 Python 3.10+
-- Optional: LangChain, LLMs (OpenAI, Claude, etc.) depending on your agent logic
+- LLms-GPT-4o model
 
-### 📦 Features
+### 🔗 Integrations
 
-- Modular agent structure: easily extend or modify individual agents
-- CrewAI Flow integration for seamless task coordination
-- Human-like calendar management using AI agents
-- Reusable architecture for other assistant-style tools
-
-### 📸 Example Use Case
-
-A user needs to schedule a new meeting. The system:
-1. Uses the **Availability Checker Agent** to find free time slots
-2. Confirms no conflicting events using the **Event Checker Agent**
-3. Uses the **Meeting Scheduler Agent** to book and confirm the event
+- **Google Calendar API** – for reading and writing events, checking availability, and syncing real user calendars.
 
 
-### 🚧 Future Improvements
 
-- Google Calendar / Outlook API Integration
-- Natural language interface (via Chat UI or CLI)
-- Reminder and notification agent
-- Time zone support
 
-### 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-### ✨ Contributions
-
-Feel free to fork, contribute, or suggest improvements!
-
----
 
 ### 🙋‍♀️ Why I Built This
 
