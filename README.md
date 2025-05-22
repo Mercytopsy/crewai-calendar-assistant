@@ -39,5 +39,27 @@ A user needs to schedule a new meeting. The system:
 2. Confirms no conflicting events using the **Event Checker Agent**
 3. Uses the **Meeting Scheduler Agent** to book and confirm the event
 
-## 🧩 Folder Structure
+
+### 🚧 Future Improvements
+
+- Google Calendar / Outlook API Integration
+- Natural language interface (via Chat UI or CLI)
+- Reminder and notification agent
+- Time zone support
+
+### 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+### ✨ Contributions
+
+Feel free to fork, contribute, or suggest improvements!
+
+---
+
+### 🙋‍♀️ Why I Built This
+
+I created this project as a demonstration of how **CrewAI** can be used to build **collaborative agent systems** tailored to real-world workflows like calendar management. It's designed for anyone who wants to experiment with LLM-powered task delegation in a practical domain.
 
