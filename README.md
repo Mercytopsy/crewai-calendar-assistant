@@ -1,57 +1,43 @@
-# {{crew_name}} Crew
+## 🧠 Calendar Multi-Agent Assistant with CrewAI
 
-Welcome to the {{crew_name}} Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+This project is a **multi-agent personal assistant for managing calendars and schedules**, built using [CrewAI](https://docs.crewai.com/). The system orchestrates a collaborative set of specialized agents through a centralized **CrewAI Flow**, offering seamless automation of meeting scheduling, availability checking, and event tracking.
 
-## Installation
+### 🚀 Overview
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+Designed to act as your intelligent calendar companion, this assistant is powered by three specialized CrewAI agents and a managing agent that coordinates their tasks. The system streamlines calendar-related tasks through a modular and extensible CrewAI architecture.
 
-First, if you haven't already, install uv:
+### 👥 Agents
 
-```bash
-pip install uv
-```
+- **📅 Meeting Scheduler Agent**  
+  Proposes and schedules meetings based on user input, availability, and context.
 
-Next, navigate to your project directory and install the dependencies:
+- **🕒 Availability Checker Agent**  
+  Scans calendar data or inputs to determine optimal times for new events or meetings.
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
+- **🎉 Event Checker Agent**  
+  Tracks existing events, ensures no overlaps, and provides quick summaries of upcoming events.
 
-### Customizing
+These agents are dynamically orchestrated by a **Manager Agent** using CrewAI's `@crew` method and structured within a unified **CrewAI Flow**.
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+### 🛠️ Tech Stack
 
-- Modify `src/calendar_assistant_flow/config/agents.yaml` to define your agents
-- Modify `src/calendar_assistant_flow/config/tasks.yaml` to define your tasks
-- Modify `src/calendar_assistant_flow/crew.py` to add your own logic, tools and specific args
-- Modify `src/calendar_assistant_flow/main.py` to add custom inputs for your agents and tasks
+- 🧠 [CrewAI](https://github.com/CrewAI/crewAI)
+- 🐍 Python 3.10+
+- Optional: LangChain, LLMs (OpenAI, Claude, etc.) depending on your agent logic
 
-## Running the Project
+### 📦 Features
 
-To kickstart your flow and begin execution, run this from the root folder of your project:
+- Modular agent structure: easily extend or modify individual agents
+- CrewAI Flow integration for seamless task coordination
+- Human-like calendar management using AI agents
+- Reusable architecture for other assistant-style tools
 
-```bash
-crewai run
-```
+### 📸 Example Use Case
 
-This command initializes the calendar_assistant_flow Flow as defined in your configuration.
+A user needs to schedule a new meeting. The system:
+1. Uses the **Availability Checker Agent** to find free time slots
+2. Confirms no conflicting events using the **Event Checker Agent**
+3. Uses the **Meeting Scheduler Agent** to book and confirm the event
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+## 🧩 Folder Structure
 
-## Understanding Your Crew
-
-The calendar_assistant_flow Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
-
-## Support
-
-For support, questions, or feedback regarding the {{crew_name}} Crew or crewAI.
-
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.
-"# crewai-calendar-assistant" 
