@@ -46,4 +46,17 @@ These agents are given tasks by a **Manager Agent** and structured within a unif
    ```bash
    credentials.json
 
+### 📦 Installation
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/your-username/repo-name.git
+cd repo-name
+add credentials.json downloaded
+crewai install
+
+### 🚀 Run the Assistant
+- crewai flow kickoff
+
+
 
