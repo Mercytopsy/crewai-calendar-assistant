@@ -27,15 +27,23 @@ These agents are given tasks by a **Manager Agent** and structured within a unif
 - 🐍 Python 3.10+
 - LLms-GPT-4o model
 
-### 🔗 Integrations
+### 🔗 Connect to Google Calendar API
 
-- **Google Calendar API** – for reading and writing events, checking availability, and syncing real user calendars.
+1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
+2. Create a new project or select an existing one.
+3. **Enable Google Calendar API**:
+   - Navigate to `APIs & Services > Library`
+   - Search for **Google Calendar API** and click **Enable**
+4. **Configure OAuth consent screen**:
+   - Go to `APIs & Services > OAuth consent screen`
+   - Select user type and complete the required fields
+5. **Create OAuth Client ID**:
+   - Go to `APIs & Services > Credentials`
+   - Click **Create Credentials > OAuth client ID**
+   - Choose **Desktop app** as the application type
+   - Click **Create**
+6. **Download the JSON file** and rename it to:
+   ```bash
+   credentials.json
 
-
-
-
-
-### 🙋‍♀️ Why I Built This
-
-I created this project as a demonstration of how **CrewAI** can be used to build **collaborative agent systems** tailored to real-world workflows like calendar management. It's designed for anyone who wants to experiment with LLM-powered task delegation in a practical domain.
 
