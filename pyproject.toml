@@ -1,0 +1,30 @@
+[project]
+name = "calendar_assistant_flow"
+version = "0.1.0"
+description = "calendar_assistant_flow using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.119.0,<1.0.0",
+    "google-api-python-client>=2.169.0",
+    "google-auth-httplib2>=0.2.0",
+    "google-auth-oauthlib>=1.2.2",
+    "langchain>=0.3.25",
+    "langchain-groq>=0.3.2",
+    "openai>=1.75.0",
+    "pydantic[email]>=2.11.4",
+    "pytz>=2025.2",
+    "tzlocal>=5.3.1",
+]
+
+[project.scripts]
+kickoff = "calendar_assistant_flow.main:kickoff"
+run_crew = "calendar_assistant_flow.main:kickoff"
+plot = "calendar_assistant_flow.main:plot"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "flow"

@@ -1,0 +1,20 @@
+project_manager_task:
+  description: >
+    First analyze the user's input: {question} and determine the specific task they want to carry out.
+    You are the supervisor and your work is to route the task to the right member of the team to execute.
+    These are the member of your team and their responsibilities below:
+
+
+    - **meeting_scheduler_assistant**: responsible for creating event on user's calendar
+    - **availability_checker_assistant**: responsible for handling user's availability on their calendar
+    - **event_checker_assistant**: responsible for user's events or upcoming events on their calendar
+    
+    As the supervisor you evaluate what user want to do and pick any of this agents.
+
+    IMPORTANT INSTRUCTIONS:
+    - Pick only agent that is best fit to handle this task. 
+    - Your output must contain exactly one agent name from the list 
+  expected_output: >
+    List of names of relevant experts from the team [meeting_scheduler, availability_checker, event_checker_reminder] or an empty list if no expert is needed.
+  agent: project_manager
+

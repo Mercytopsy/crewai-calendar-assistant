@@ -1,0 +1,145 @@
+meeting_crafter_task:
+  description: >
+    Analyze user's question: {question}, and carry out your responsibity using the
+    current date: {current_date}. You are to break the content down as follows:
+
+    "summary": "The title of the meeting",
+    "location": "The location where the meeting will take place",
+    "description": "The details of the meeting",
+    "start": "The meeting start time in YYYY-MM-DDTHH:MM:SS string format",
+    "end": "The meeting end time in YYYY-MM-DDTHH:MM:SS string format",
+    "attendees": "Emails of the attendees provided"
+
+    After that, convert it into a JSON object, which will be your final output.
+      
+    IMPORTANT INSTRUCTIONS: 
+    - Your final output must be a valid JSON object, like the example below.
+
+      Example:
+        {
+        "summary": "Daily Standup",
+        "location": "Not decided",
+        "description": "A daily sync-up meeting to review progress, discuss blockers, and align on priorities for the day. Includes updates from each team member.",
+         "start": "2025-05-16T08:00:00",
+        "end": "2025-05-16T10:00:00",
+        "attendees": ["grace@gmail.com", "joy@gmail.com"]
+        }
+    - Ensure you use the right date. The current date is, {current_date}.
+      
+    - Do not include any explanations or additional text outside the JSON object.
+
+    - Return only the JSON object.
+
+    IMPORTANT INSTRUCTIONS FOR MISSING VALUES:
+    - If some fields are not provided, leave them as empty strings.
+    - Ensure you use the right date. The current date is, {current_date}.
+    - You must always include a summary, start time, and end time.
+
+    Example for missing values:
+      {
+      "summary": "Daily Standup",
+      "location": "",
+      "description": "",
+      "start": "2025-05-16T08:00:00",
+      "end": "2025-05-16T10:00:00",
+      "attendees": ""
+      }
+ 
+  expected_output: >
+    A JSON object with summary, location, description, start, end, and attendees fields.
+  agent: meeting_scheduler_assistant
+
+
+
+meeting_scheduler_task:
+  description: >
+    Based on the JSON object provided to you, you are to take this data 
+    and use it to schedule meetings and events.
+    After that, generate a short summary to notify the user that their meeting or 
+    event has been created.
+    You must not do anything aside from scheduling meeting/event.
+   
+    IMPORTANT INSTRUCTIONS:
+    - You are to carry out only events/meeting scheduling task. 
+    - If the question is not related to scheduling, state 'no opinion'
+
+  expected_output: >
+     A short summary containing the meeting or event title and date to notify the user that the meeting/event has been created.
+  agent: meeting_scheduler_assistant
+  context: 
+  - meeting_crafter_task
+
+
+
+
+
+dateinterpreter_task:
+  description: >
+    First analyze user's question on {question} and understand the intended date and time. 
+    The current date is {current_date}. Based on the information provided, extract and construct a start datetime and an end datetime.
+
+    The result should follow the format below:
+
+    Example:
+    {
+      "start": "May 16, 2025, 6:00am",
+      "end": "May 16, 2025, 10:00am"
+    }
+
+    Once the values are determined, convert them into a valid JSON object. This JSON object will be your final output.
+
+
+    IMPORTANT INSTRUCTIONS:
+    - If **no date** is provided, you must interpret user's message in line with the current date.
+    - The date must be in this format **May 16, 2025, 6:00am**.
+    - If the user does not explicitly provide a time range, use **6:00am** as the default start time 
+      and **11:59pm** as the default end time, both applied to the computed date.
+    - Your final output must be a **valid JSON object**.
+    - Do **not** include any explanations or additional text outside the JSON object.
+    - Only return the JSON object.
+
+  expected_output: >
+    A JSON object with "start" and "end" fields.
+  agent: datetime_interpreter_specialist
+
+
+
+
+
+availability_checker_task:
+  description: >
+    Use JSON object provided to you and extract the start and end datetime values to check the user's availability 
+    on their calendar. After performing the check, generate a brief report summarizing the user's availability 
+    for the requested time range.
+
+    IMPORTANT INSTRUCTIONS:
+    - You are to carry out only task related to checking user's availability on their calendar. 
+    - If the question is not related to availability checking, state 'no opinion'
+
+  expected_output: >
+     A short summary containing the user's availabilty or 'no opinion'.
+  agent: availability_checker_assistant
+  context: 
+  - dateinterpreter_task
+
+
+event_checker_task:
+  description: >
+    Take the provided JSON object, then extract the start and end datetime to query user's calendar for relevant events. 
+    Once the events are retrieved, generate a clear and concise report summarizing 
+    the user's scheduled activities within the specified timeframe. This report will serve as your final output.
+
+
+    IMPORTANT INSTRUCTIONS:
+    - You are to carry out only task related to checking user's upcoming events on their calendar. 
+    - If the question is not related to events checking, state 'no opinion'
+    - The final output must be a summary report of the user's events based on the extracted date(s).
+
+  expected_output: >
+      A short summary containing the user's events or 'no opinion'.
+  agent: event_checker_assistant
+  context: 
+  - dateinterpreter_task
+
+
+
