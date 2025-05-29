@@ -1,4 +1,4 @@
-## 🧠 Calendar Multi-Agent Assistant with CrewAI
+## Calendar Multi-Agent Assistant with CrewAI
 
 This project is a **multi-agent personal assistant for managing calendars and schedules**, built using [CrewAI](https://docs.crewai.com/). 
 
