@@ -22,7 +22,7 @@ calendar_assistant = CalendarAssistant()
 
 class CalendarState(BaseModel): 
     id: str = "1"
-    question: str = "Can you help me check my availability and schedule a meeting with odunayo927@gmail.com by 9pm today for daily standup."
+    question: str = "Can you help me check my availability and schedule a meeting with joe@gmail.com by 9pm today for daily standup."
     # question: str = "Can you help me check my avalability today."
     chosen_assistant: List[str] = []
     response: List[str] = []
